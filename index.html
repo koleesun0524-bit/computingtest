@@ -1,13 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>컴활 1급 필기 공부앱</title>
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Favicon (원하면 기존 vite.svg를 유지해도 됩니다) -->
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+
+    <!-- iOS PWA 보조 메타 (아이콘 PNG 준비되면 아래 주석 해제) -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <!-- <link rel="apple-touch-icon" href="/icons/icon-180.png" /> -->
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Service Worker 등록 -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js").catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>
